@@ -1,0 +1,4 @@
+In that little pet-project I perform a little simple USD-UAH exchanger (accounting system for the cashier)
+This project was done in two versions: for interactions with xlsx and csv files, respectively.
+Attached are the relevant files for verification. The main functionality of the program is contained
+in separate functions, which are enclosed in the modules.py file that is imported into the main code.
