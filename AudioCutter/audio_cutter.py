@@ -8,3 +8,4 @@ video_file = Path('gorillaz-feel-good-inc.mp4')
 video = moviepy.editor.VideoFileClip(f'{video_file}')
 audio = video.audio
 audio.write_audiofile(f'{video_file.stem}.mp3')
+print(type(video_file))
