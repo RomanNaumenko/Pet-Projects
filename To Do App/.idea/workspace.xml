@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e6947dc-40c0-44f0-ae3f-cde2e6e5fb20" name="Changes" comment="Create ToDo application with Django.">
-      <change beforePath="$PROJECT_DIR$/ToDo_app_with_Django" beforeDir="false" afterPath="$PROJECT_DIR$/ToDo_app_with_Django" afterDir="false" />
-    </list>
+    <list default="true" id="2e6947dc-40c0-44f0-ae3f-cde2e6e5fb20" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,27 +10,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="ProjectId" id="2L6yYcNqfkDFGVNtp7yonnoxPDU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Roman/PycharmProjects/Pure_Pets/To Do App",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Roman/PycharmProjects/Pure_Pets/To Do App&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="To Do App" type="PythonConfigurationType" factoryName="Python">
       <module name="To Do App" />
@@ -66,23 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675205875544</updated>
       <workItem from="1675205876837" duration="5000" />
-      <workItem from="1675206009659" duration="331000" />
     </task>
-    <task id="LOCAL-00001" summary="Create ToDo application with Django.">
-      <created>1675206116388</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1675206116388</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Create ToDo application with Django.">
-      <created>1675206197910</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1675206197910</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,9 +73,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Create ToDo application with Django." />
-    <option name="LAST_COMMIT_MESSAGE" value="Create ToDo application with Django." />
   </component>
 </project>
