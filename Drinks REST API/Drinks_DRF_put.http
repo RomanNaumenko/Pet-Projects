@@ -1,0 +1,7 @@
+PUT http://127.0.0.1:8000/drinks/2
+Content-Type: application/json
+
+{
+  "name": "Coca-Cola",
+  "desc": "Good old cola, nothing more."
+}
