@@ -1,0 +1,7 @@
+POST http://127.0.0.1:5000/drinks
+Content-Type: application/json
+
+{
+  "name": "Coca-Cola: Zero Sugar",
+  "description": "It`s not that bad, don`t understand why people hate it"
+}
