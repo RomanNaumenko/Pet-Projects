@@ -1,0 +1,8 @@
+PUT http://127.0.0.1:8080/alarms
+Content-Type: application/json
+
+{
+  "id": "63e66d7cf7ff1bc9a7bbac8d",
+  "Point": "4 cpu",
+  "Status": "Exceeding the critical operating mark"
+}

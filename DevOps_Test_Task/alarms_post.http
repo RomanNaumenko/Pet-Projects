@@ -1,0 +1,7 @@
+POST http://127.0.0.1:8080/alarms
+Content-Type: application/json
+
+{
+  "Point": "2 cpu",
+  "Status": "Exceeding the critical operating mark"
+}
