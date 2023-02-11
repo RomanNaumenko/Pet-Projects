@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    container_name: memory_alarm_api
+    restart: always
+    ports:
+        - "8080:8080"
+    command: python memory_alarm_api.py
+
+
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    hostname: mongodb
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: admin
+        MONGO_INITDB_ROOT_PASSWORD: admin
+        MONGO_INITDB_DATABASE: alarm_status
+    ports:
+      - "27017:27017"
+    restart: unless-stopped

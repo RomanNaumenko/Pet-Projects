@@ -20,6 +20,6 @@ class MongoDBConnection():
 
 
 if __name__ == '__main__':
-    with MongoDBConnection('admin', 'admin', '127.0.0.1') as db:
+    with MongoDBConnection('admin', 'admin', 'mongodb') as db:
         collection = db['alarm_status']
         collection.insert_one({"Point": "swap-memory", "Status": "Exceeding the critical operating mark"})

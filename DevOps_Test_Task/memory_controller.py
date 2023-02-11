@@ -1,16 +1,17 @@
 import psutil
 import requests
+import asyncio
 
 
 def memory_check():
     virt_mem = psutil.virtual_memory()
     swap_mem = psutil.swap_memory()
     print(f'System memory: {virt_mem}')
-    if virt_mem.percent > 90:
+    if virt_mem.percent > 80:
         memory_alarm("virtual memory")
 
     print(f'System swap memory: {swap_mem}\n')
-    if swap_mem.percent > 90:
+    if swap_mem.percent > 80:
         memory_alarm("swap memory")
 
     for _ in range(100):
@@ -21,13 +22,13 @@ def memory_check():
                 if cpu > 20.0:
                     memory_alarm(f"{count + 1} cpu")
 
-        break
+            break
 
     print('Logical CPUs:', psutil.cpu_count())
 
 
 def memory_alarm(problem_point):
-    api_request = requests.post(url="http://127.0.0.1:8080/alarms",
+    api_request = requests.post(url="http://localhost:8080/",
                                 json={
                                     'Point': problem_point,
                                     'Status': "Exceeding the critical operating mark"
