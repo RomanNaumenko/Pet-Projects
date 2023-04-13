@@ -99,6 +99,7 @@ class WikiRacer:
             list_of_results = result
             continue
         return list_of_results
+    print("___________________")
 
 
 if __name__ == "__main__":
