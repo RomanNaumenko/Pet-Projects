@@ -25,6 +25,10 @@ class UnwantedLinkError(Exception):
     pass
 
 
+class NonExistentLinkError(Exception):
+    pass
+
+
 class WikiRacer:
 
     def __init__(self):
@@ -32,7 +36,8 @@ class WikiRacer:
                         'Connection': 'close'}
         self.road_pits = (":", "Збільшити", "(ще не написана)", "Категорія:", "Файл:", "Вікіпедія:",
                           "Шаблон:", "Категорії", "Довідка:", "Обговорення Вікіпедії:",
-                          "Редагувати розділ:", "Спеціальна:",  "en:", "Обговорення:")
+                          "Редагувати розділ:", "Спеціальна:", "en:", "Обговорення:",
+                          "Перегляд цього шаблону")
 
     def find_path(self, start: str, finish: str, list_of_results: list) -> List[str]:
 
@@ -60,33 +65,38 @@ class WikiRacer:
         all_links = soup.find(id="bodyContent").find_all('a')
 
         for link in all_links:
-            if len(list_of_temporary) <= 100:
-                try:
-                    link_title = link['title']
-                    if link_title in list_of_temporary:
-                        continue
-                    for unwanted_title in self.road_pits:
-                        if link_title.find(unwanted_title) != -1:
-                            # print("Unwanted title! Let`s try another link.")
-                            raise UnwantedTitleError
-                    # print(link_title)
-                    if link['href'].endswith('.png'):
-                        raise UnwantedLinkError
-
-                except (KeyError, UnwantedTitleError, UnwantedLinkError):
+            try:
+                link_title = link['title']
+                if link_title in list_of_temporary:
                     continue
-                if link_title == finish:
-                    # full_link = "https://uk.wikipedia.org" + link['href']
-                    list_of_results.append(link_title)
-                    return list_of_results
-                else:
-                    list_of_temporary.append(link_title)
-            else:
-                random_link_choice = random.choice(list_of_temporary)
-                list_of_results.append(random_link_choice)
-                print(list_of_results)
-                break
 
+                for unwanted_title in self.road_pits:
+
+                    if link_title.find(unwanted_title) != -1:
+                        # print("Unwanted title! Let`s try another link.")
+                        raise UnwantedTitleError
+                # print(link_title)
+                if link['href'].endswith('.png'):
+                    raise UnwantedLinkError
+
+                if link['href'] == f'https://uk.wikipedia.org/w/index.php?title={link_title}&action=edit':
+                    raise NonExistentLinkError
+
+            except (KeyError, UnwantedTitleError, UnwantedLinkError, NonExistentLinkError):
+                continue
+
+            if link_title == finish:
+                # full_link = "https://uk.wikipedia.org" + link['href']
+                list_of_results.append(link_title)
+                return list_of_results
+            else:
+                list_of_temporary.append(link_title)
+                continue
+
+        list_of_temporary = list(set(list_of_temporary[0:200]))
+        random_link_choice = random.choice(list_of_temporary)
+        list_of_results.append(random_link_choice)
+        print(list_of_results)
         list_of_temporary.clear()
         return list_of_results
 
@@ -99,6 +109,7 @@ class WikiRacer:
             list_of_results = result
             continue
         return list_of_results
+
     print("___________________")
 
 

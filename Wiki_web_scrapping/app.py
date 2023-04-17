@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import lxml
+# import lxml
 import urllib.request, urllib.error, urllib.parse
 import pprint
 import random
