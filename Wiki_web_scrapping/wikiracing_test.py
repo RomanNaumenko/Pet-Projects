@@ -11,23 +11,23 @@ class WikiRacerTest(unittest.TestCase):
         self.assertEqual(path, ['Дружба', 'Якопо Понтормо', 'Рим'])
 
     def test_1(self):
-        path = self.racer.find_path('Дружба', 'Рим')
+        path = self.racer.pathfinder('Дружба', 'Рим')
         self.assertEqual(path, ['Дружба', 'Якопо Понтормо', 'Рим'])
 
     def test_2(self):
-        path = self.racer.find_path('Мітохондріальна ДНК', 'Вітамін K')
+        path = self.racer.pathfinder('Мітохондріальна ДНК', 'Вітамін K')
         self.fail("implement me")
 
     def test_3(self):
-        path = self.racer.find_path('Марка (грошова одиниця)', 'Китайський календар')
+        path = self.racer.pathfinder('Марка (грошова одиниця)', 'Китайський календар')
         self.fail("implement me")
 
     def test_4(self):
-        path = self.racer.find_path('Фестиваль', 'Пілястра')
+        path = self.racer.pathfinder('Фестиваль', 'Пілястра')
         self.fail("implement me")
 
     def test_5(self):
-        path = self.racer.find_path('Дружина (військо)', '6 жовтня')
+        path = self.racer.pathfinder('Дружина (військо)', '6 жовтня')
         self.fail("implement me")
 
 

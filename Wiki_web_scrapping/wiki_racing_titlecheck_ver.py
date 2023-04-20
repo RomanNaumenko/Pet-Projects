@@ -5,11 +5,9 @@ import requests
 from bs4 import BeautifulSoup
 import random
 from time import sleep
+import pprint
 from requests.adapters import HTTPAdapter, Retry
 import psycopg2
-
-requests_per_minute = 100
-links_per_page = 200
 
 
 class UnwantedTitleError(Exception):
@@ -29,7 +27,7 @@ class WikiRacer:
     def __init__(self):
         self.headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0',
                         'Connection': 'close'}
-        self.road_pits = (":", "Збільшити", "(ще не написана)", "Вікіпедія","Категорія:", "Файл:",
+        self.road_pits = (":", "Збільшити", "(ще не написана)", "Вікіпедія", "Категорія:", "Файл:",
                           "Вікіпедія:", "Шаблон:", "Категорії", "Довідка:", "Обговорення Вікіпедії:",
                           "Редагувати розділ:", "Спеціальна:", "en:", "Обговорення:",
                           "Перегляд цього шаблону")
@@ -92,7 +90,9 @@ class WikiRacer:
             list_of_temporary = list(set(list_of_temporary[0:200]))
             random_link_choice = random.choice(list_of_temporary)
             list_of_results.append(random_link_choice)
-            print(list_of_results)
+            # print(F"Urls: {list_of_results}")
+            print(f"Urls in total: {len(list_of_results)}")
+            print('\n')
             list_of_temporary.clear()
             return list_of_results
 
@@ -115,13 +115,15 @@ class WikiRacer:
                     return result
 
                 """TODO: Make a check for a too long storage path sequence."""
+
     def url_storage_save(self, results: list):
         start = results[0]
         finish = results[-1]
-        tuple_of_results = tuple(results)
+        array = ["\"{every_elem}\"" for every_elem in results]
         with psycopg2.connect(self.db_config) as conn:
             with conn.cursor() as curs:
-                curs.execute(f"INSERT INTO paths VALUES ({start}, {finish}, {tuple_of_results})")
+                curs.execute(f"INSERT INTO paths (start_point,finish_point,path) "
+                             f"VALUES ('{start}', '{finish}', ARRAY[{array}])")
 
     def pathfinder(self, start: str, finish: str) -> List[str]:
 
@@ -131,9 +133,13 @@ class WikiRacer:
 
         list_of_results = [start]
         counter = 200
-        while finish not in list_of_results and counter != 0:
+        while finish not in list_of_results:
+            if counter == 0:
+                break
+            counter -= 1
             result = self.find_path(list_of_results[-1], finish, list_of_results)
             list_of_results = result
+
             continue
         # print(self.db_url_storage())
         if finish not in list_of_results:
@@ -148,5 +154,6 @@ if __name__ == "__main__":
     racer = WikiRacer()
     # path = racer.pathfinder("Дружба",
     #                         "Рим")
-    path = racer.pathfinder("Мітохондріальна ДНК", "Вітамін K")
+    # path = racer.pathfinder("Мітохондріальна ДНК", "Вітамін K")
+    path = racer.pathfinder('Мітохондріальна ДНК', 'Вітамін K')
     print(path)
