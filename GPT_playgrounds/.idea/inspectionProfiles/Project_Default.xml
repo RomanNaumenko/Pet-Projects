@@ -1,0 +1,59 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="266" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="IncorrectHttpHeaderInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="customHeaders">
+        <set>
+          <option value="    &quot;amount&quot;" />
+        </set>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="18">
+            <item index="0" class="java.lang.String" itemvalue="importlib-metadata" />
+            <item index="1" class="java.lang.String" itemvalue="colorama" />
+            <item index="2" class="java.lang.String" itemvalue="Flask-Migrate" />
+            <item index="3" class="java.lang.String" itemvalue="prompt-toolkit" />
+            <item index="4" class="java.lang.String" itemvalue="typing-extensions" />
+            <item index="5" class="java.lang.String" itemvalue="pytz" />
+            <item index="6" class="java.lang.String" itemvalue="itsdangerous" />
+            <item index="7" class="java.lang.String" itemvalue="click" />
+            <item index="8" class="java.lang.String" itemvalue="Flask-SQLAlchemy" />
+            <item index="9" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="10" class="java.lang.String" itemvalue="dnspython" />
+            <item index="11" class="java.lang.String" itemvalue="eventlet" />
+            <item index="12" class="java.lang.String" itemvalue="importlib-resources" />
+            <item index="13" class="java.lang.String" itemvalue="psycopg2-pool" />
+            <item index="14" class="java.lang.String" itemvalue="SQLAlchemy" />
+            <item index="15" class="java.lang.String" itemvalue="psycopg2" />
+            <item index="16" class="java.lang.String" itemvalue="psycopg2-binary" />
+            <item index="17" class="java.lang.String" itemvalue="postgres" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+          <option value="N801" />
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="main.QlineEdit" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
