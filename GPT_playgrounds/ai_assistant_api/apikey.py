@@ -1,1 +1,1 @@
-apikey = "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"
+apikey = your_api_key
