@@ -1,18 +1,15 @@
-from datetime import datetime
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
-import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.memory import VectorStoreRetrieverMemory
 from langchain.chains import ConversationChain
 from langchain.prompts import PromptTemplate
 from langchain import LLMChain
 import pprint
-import faiss
 import chromadb
 from apikey import apikey
-from langchain.docstore import InMemoryDocstore
-from langchain.vectorstores import FAISS, Chroma
+
+from langchain.vectorstores import Chroma
 import os
 
 os.environ["OPENAI_API_KEY"] = apikey
@@ -20,11 +17,14 @@ os.environ["OPENAI_API_KEY"] = apikey
 
 def create_and_get_db():
     embeddings = OpenAIEmbeddings()
-    vectorstore = Chroma("langchain_store", embeddings, persist_directory='.')
-    if not (os.path.exists('chroma-collections.parquet') and os.path.exists('chroma-embeddings.parquet')):
-        vectorstore.persist()
-    retriever = vectorstore.as_retriever(search_kwargs=dict(k=4), search_type='mmr')
+    vectorstore = Chroma("langchain_store", embeddings, persist_directory='db')
+    retriever = vectorstore.as_retriever(search_kwargs=dict(k=2), search_type='mmr')
     memory = VectorStoreRetrieverMemory(retriever=retriever)
+
+    if not (os.path.exists('db/chroma-collections.parquet') and os.path.exists('db/chroma-embeddings.parquet')):
+        memory.save_context({"input": "My favorite food is pizza"}, {"output": "thats good to know"})
+        vectorstore.persist()
+
     return memory, vectorstore
 
 
@@ -45,12 +45,10 @@ def get_chat_chain():
 
 
 while True:
+
     human_input = input("Human:")
+    db_memory, db_vectorstore = create_and_get_db()
     output = get_chat_chain().predict(input=human_input)
     pprint.pprint(output)
-    db_memory, db_vectorstore = create_and_get_db()
     db_memory.save_context({"input": human_input}, {"output": output})
     db_vectorstore.persist()
-
-
-# st.title = '🦜AI Assistant🔗'
